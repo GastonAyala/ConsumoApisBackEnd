@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Películas</title>
+    <link rel='stylesheet' href='/css/style.css' />
+
+</head>
+
+<body>
+    <figure>
+        <img src="/img/logo-DH.png" alt="Logo Digital House">
+    </figure>
+    <h1>LISTADO DE PELÍCULAS</h1>
+    <br>
+    <p>
+        <a class="botonAgregar" href="/movies/add">Agregar una Pelicula</a>
+        <a class="botonVolver" href="/">inicio</a>
+
+    </p>
+    <br>
+    <div class="buscar-titulo">
+        <form action="/movies/buscar" method="POST">
+            <input type="text" name="titulo" id="titulo">
+            <button class="boton-buscar" type="submit">Buscar una Pelicula</button>
+        </form>
+        
+    </div>
+    <ul>
+        <% for( let i = 0; i < movie.length; i++ ) { %>
+        <li style="padding: 20px;">
+            <a href="/movies/detail/<%= movie[i].id  ? movie[id].id : movie[i].imdbID %>"><%= movie[i].title ? movie[i].title : movie[i].Title %></a>
+        </li>
+        <% if (movie[i].Poster) { %>
+            <li>
+                <a href="/movies/detail/<%= movie[i].id  ? movie[id].id : movie[i].imdbID %>">
+                    <img style="width: 400px; height: 400px;" src="<%= movie[i].Poster %>" alt="">
+                </a>
+            </li>
+        <% } %>
+        
+        <% } %>
+    </ul>
+</body>
+
+</html>
